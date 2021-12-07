@@ -23,7 +23,7 @@
                 <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
             </div>
             <div class="header-div right">
-                <button type="button" class="header-item button">Código Promocional</button>
+                <button type="button" class="header-item button" onclick="smsFunc()">¡Oferta del Día!</button>
                 <button type="button" class="header-item button" id="login-button">Ingresar a Cuenta</button>
             </div>
         </div>
@@ -39,6 +39,17 @@
                 <a href="https://twitter.com" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a> <br>
             </div>
         </div>
+
+        <div class="welcome-popup hidden sms">
+            <h1>¡Las mejores promociones a un click!</h1>
+            <p>Ingresa el número de teléfono para obtener las mejores ofertas!</p>
+            <form action="./enviarPromo.php" method="POST">
+                <input type="tel" id="phone" name="phone" placeholder="24455678" pattern="[0-9]{4}[0-9]{4}" required><br><br>
+                <small>Formato: 24455678 (Solo valido para CR <img src="./imagenes/CR.png" alt="Costa Rica" class="social-media contact-icons">)</small><br><br>
+                <button class="btn btn-success" type="submit">Listo!</button>
+            </form>
+        </div>
+
         <div class="overlay hidden"></div>
 
         <footer>

@@ -21,7 +21,7 @@
             <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
         </div>
         <div class="header-div right">
-            <button type="button" class="header-item button">Código Promocional</button>
+            <button type="button" class="header-item button">¡Oferta del Día!</button>
             <button type="button" class="header-item button" id="login-button">Ingresar a Cuenta</button>
         </div>
     </div>
