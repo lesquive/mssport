@@ -79,46 +79,47 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+
+            <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "cisco123";
+            $dbname = "msport";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = "SELECT nombre_producto, precio, descripcion, imagen FROM producto";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    // echo "nombre_producto: " . $row["nombre_producto"] . " - precio: " . $row["precio"] . " " . $row["descripcion"] . "<br>";
+            ?>
+                    <!-- <div class="row"> -->
+                    <!-- <div class="col"> -->
+                    <div class="card" style="width: 18rem;">
+                        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['imagen']); ?>" class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title"> <?php echo $row['nombre_producto']; ?> </h5>
+                            <p class="card-text"> <?php echo $row['descripcion']; ?> por tan solo <?php echo $row['precio']; ?>$</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+                    <!-- </div> -->
+                    <!-- </div> -->
+            <?php
+                }
+            } else {
+                echo "0 results";
+            }
+            $conn->close();
+            ?>
         </div>
     </div>
 
