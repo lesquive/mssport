@@ -21,8 +21,9 @@
             <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
         </div>
         <div class="header-div right">
-            <button type="button" class="header-item button">¡Oferta del Día!</button>
-            <button type="button" class="header-item button" id="login-button">Ingresar a Cuenta</button>
+            <a href="javascript:void(0);" class="carrito-link"> <img src="./imagenes/shopping-cart.png" alt="carrito" class="social-media" onclick="verCarritoFunc()"> 0 </a>
+            <a href="javascript:void(0);" class="carrito-link"> <img src="./imagenes/discount.png" alt="Admin login" class="social-media" onclick="smsFunc()"> </a>
+            <a href="javascript:void(0);" class="carrito-link"> <img src="./imagenes/lock.png" alt="Admin login" class="social-media"> </a>
         </div>
     </div>
 
@@ -37,6 +38,29 @@
             <a href="https://twitter.com" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a> <br>
         </div>
     </div>
+
+    <div class="welcome-popup hidden sms">
+        <h1>¡Las mejores promociones a un click!</h1>
+        <p>Ingresa el número de teléfono para obtener las mejores ofertas!</p>
+        <form action="./enviarPromo.php" method="POST">
+            <input type="tel" id="phone" name="phone" placeholder="24455678" pattern="[0-9]{4}[0-9]{4}" required><br><br>
+            <small>Formato: 24455678 (Solo valido para CR <img src="./imagenes/CR.png" alt="Costa Rica" class="social-media contact-icons">)</small><br><br>
+            <button class="btn btn-success" type="submit">Listo!</button>
+        </form>
+    </div>
+
+    <div class="welcome-popup hidden carrito">
+        <h3>¡Compre de manera fácil!</h3>
+        <form action="./enviarCompra.php" method="POST">
+            <p>Ingresa el codigo del SMS para recibir un descuento!</p>
+            <input type="number" id="smscode" name="smscode" placeholder="12345"><br><br>
+            <button class="btn btn-outline-warning btn-sm" type="submit">Aplicar Descuento</button>
+        </form><br>
+        <div class="carritoItem"></div>
+        <div class="carritoTotal"></div>
+        <button type="button" class="btn btn-success btn-lg">Listo!</button>
+    </div>
+
     <div class="overlay hidden"></div>
 
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -104,11 +128,12 @@
                     <!-- <div class="row"> -->
                     <!-- <div class="col"> -->
                     <div class="card" style="width: 18rem;">
-                        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['imagen']); ?>" class="card-img-top" alt="..." />
+                        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['imagen']); ?>" class="card-img-top" alt="imagen de producto" />
                         <div class="card-body">
                             <h5 class="card-title"> <?php echo $row['nombre_producto']; ?> </h5>
-                            <p class="card-text"> <?php echo $row['descripcion']; ?> por tan solo <?php echo $row['precio']; ?>$</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-text"> <?php echo $row['descripcion']; ?></p>
+                            <p id="precioProducto"><?php echo $row['precio']; ?>$</p>
+                            <a href="javascript:void(0);" class="btn btn-primary carrito-btn" onclick="updateCarrito('<?php echo $row['nombre_producto']; ?>', '<?php echo $row['precio']; ?>')">Agregar a Carrito <img src="./imagenes/shopping-cart.png" alt="carito" class="social-media"></a>
                         </div>
                     </div>
                     <!-- </div> -->
