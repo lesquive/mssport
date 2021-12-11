@@ -8,6 +8,7 @@ const carritoBox = document.querySelector(".carrito");
 const carritoLink = document.querySelector(".carrito-link");
 const carritoItem = document.querySelector(".carritoItem");
 const carritoTotal = document.querySelector(".carritoTotal");
+const applicarDescuentoBttn = document.querySelector(".SMSBttn");
 
 const closeModel = () => {
   console.log("cerrando welcome");
@@ -74,8 +75,14 @@ const checkCarrito = () => {
   if (typeof Storage !== "undefined") {
     if (localStorage.carritoCount) {
       carritoLink.innerHTML =
-        '<img src="./imagenes/shopping-cart.png" alt="carrito" class="social-media">' +
+        '<img src="./imagenes/shopping-cart.png" alt="carrito" class="social-media" onclick="verCarritoFunc()">' +
         localStorage.carritoCount;
+      var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+      if (existingEntries == null) existingEntries = [];
+      for (let i = 0; i < existingEntries.length; i++) {
+        carritoItem.innerHTML += `<p>${existingEntries[i]["Producto"]} : ${existingEntries[i]["Precio"]} <a href="javascript:void(0);"><img src="./imagenes/delete.png" alt="carrito" class="social-media"></a><p/>`;
+        carritoTotal.innerHTML = `<p>Total: ${localStorage.total}$<p/>`;
+      }
     } else {
       localStorage.carritoCount = 0;
       localStorage.total = 0;
@@ -85,5 +92,30 @@ const checkCarrito = () => {
     // Sorry! No Web Storage support..
   }
 };
+
+const checkDiscount = () => {
+  var smsCode = document.getElementById("smscode").value;
+  console.log(smsCode);
+
+  var check = $.ajax({
+    url: "checkDiscount.php",
+    type: "POST",
+    // dataType: "json",
+    data: { smsCode: smsCode },
+    success: function (response) {
+      console.log(response);
+      if (response !== "0 results") {
+        console.log("Apply discount");
+        var total = parseFloat(localStorage.total);
+        var descuento = parseFloat(response);
+        localStorage.total = total - total * (descuento / 100);
+        console.log(localStorage.total);
+        carritoTotal.innerHTML = `<p>Total: ${localStorage.total}$<p/>`;
+      }
+    },
+  });
+};
+
+applicarDescuentoBttn.addEventListener("click", checkDiscount);
 
 checkCarrito();

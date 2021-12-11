@@ -68,11 +68,11 @@
   color: white;
 }
 
-.carrito-link {
+.header-icon {
   color: white;
   text-decoration: none;
 }
-.carrito-link:hover {
+.header-icon:hover {
   text-decoration: none;
   cursor: pointer;
   color: white;

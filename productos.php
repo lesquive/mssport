@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
     <title>MSport</title>
 </head>
 
@@ -21,9 +22,9 @@
             <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
         </div>
         <div class="header-div right">
-            <a href="javascript:void(0);" class="carrito-link"> <img src="./imagenes/shopping-cart.png" alt="carrito" class="social-media" onclick="verCarritoFunc()"> 0 </a>
-            <a href="javascript:void(0);" class="carrito-link"> <img src="./imagenes/discount.png" alt="Admin login" class="social-media" onclick="smsFunc()"> </a>
-            <a href="javascript:void(0);" class="carrito-link"> <img src="./imagenes/lock.png" alt="Admin login" class="social-media"> </a>
+            <a href="javascript:void(0);" class="header-icon carrito-link"> <img src="./imagenes/shopping-cart.png" alt="carrito" class="social-media" onclick="verCarritoFunc()"> 0 </a>
+            <a href="javascript:void(0);" class="header-icon"> <img src="./imagenes/discount.png" alt="Admin login" class="social-media" onclick="smsFunc()"> </a>
+            <a href="javascript:void(0);" class="header-icon"> <img src="./imagenes/lock.png" alt="Admin login" class="social-media"> </a>
         </div>
     </div>
 
@@ -51,10 +52,10 @@
 
     <div class="welcome-popup hidden carrito">
         <h3>¡Compre de manera fácil!</h3>
-        <form action="./enviarCompra.php" method="POST">
+        <form>
             <p>Ingresa el codigo del SMS para recibir un descuento!</p>
             <input type="number" id="smscode" name="smscode" placeholder="12345"><br><br>
-            <button class="btn btn-outline-warning btn-sm" type="submit">Aplicar Descuento</button>
+            <button class="btn btn-outline-warning btn-sm SMSBttn" type="button">Aplicar Descuento</button>
         </form><br>
         <div class="carritoItem"></div>
         <div class="carritoTotal"></div>
