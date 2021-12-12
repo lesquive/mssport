@@ -9,6 +9,7 @@ const carritoLink = document.querySelector(".carrito-link");
 const carritoItem = document.querySelector(".carritoItem");
 const carritoTotal = document.querySelector(".carritoTotal");
 const applicarDescuentoBttn = document.querySelector(".SMSBttn");
+const ejecutarCompraBttn = document.querySelector("#ejecutarCompraBttn");
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -146,6 +147,36 @@ const checkDiscount = () => {
   });
 };
 
+const ejecutarCompra = () => {
+  var smsCode = document.getElementById("smscode").value;
+  var carritoItems = document.querySelector(".carritoItem").innerText;
+  var correo = document.getElementById("email").value;
+
+  console.log(smsCode);
+  console.log(carritoItems);
+  console.log(correo);
+
+  $.ajax({
+    url: "ejecutarCompra.php",
+    type: "POST",
+    // dataType: "json",
+    data: { smsCode: smsCode, carritoItems: carritoItems, correo: correo },
+    success: function (response) {
+      console.log(response);
+    },
+  });
+
+  window.localStorage.clear();
+  closeModel();
+  checkCarrito();
+  carritoItem.innerHTML = "";
+  carritoTotal.innerHTML = `<p>Total: ${localStorage.total}$<p/>`;
+  carritoLink.innerHTML =
+    '<img src="./imagenes/shopping-cart.png" alt="carrito" class="social-media" onclick="verCarritoFunc()">' +
+    localStorage.carritoCount;
+};
+
 applicarDescuentoBttn.addEventListener("click", checkDiscount);
+ejecutarCompraBttn.addEventListener("click", ejecutarCompra);
 
 checkCarrito();

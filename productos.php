@@ -59,7 +59,11 @@
         </form><br>
         <div class="carritoItem"></div>
         <div class="carritoTotal"></div>
-        <button type="button" class="btn btn-success btn-lg">Listo!</button>
+
+        <input type="email" id="email" name="email" placeholder="luis@example.com" required> <br>
+        <button class="btn btn-success" id="ejecutarCompraBttn">Listo!</button>
+        <!-- <button type="button" class="btn btn-success btn-lg" type="submit" value="Submit" form="submitCompra">Listo!</button> -->
+
     </div>
 
     <div class="overlay hidden"></div>
