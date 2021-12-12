@@ -18,7 +18,7 @@
         <div class="header-div left">
             <a href="./index.php" class="header-item link">Página principal</a>
             <a href="./productos.php" class="header-item link ">Productos</a>
-            <a href="url" class="header-item link">¿Quiénes somos?</a>
+            <a href="javascript:void(0);" class="header-item link" onclick="verQuienesSomosFunc()">¿Quiénes somos?</a>
             <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
         </div>
         <div class="header-div right">
@@ -63,7 +63,26 @@
         <input type="email" id="email" name="email" placeholder="luis@example.com" required> <br>
         <button class="btn btn-success" id="ejecutarCompraBttn">Listo!</button>
         <!-- <button type="button" class="btn btn-success btn-lg" type="submit" value="Submit" form="submitCompra">Listo!</button> -->
+    </div>
 
+    <div class="welcome-popup hidden quienesSomos">
+        <img src="imagenes/me.jpeg" width="180" alt="" class="box-img">
+        <h1>MSport</h1>
+        <h2>Pasion por el deporte</h2>
+        <p>Un 1 de octubre del año 2020 nace una idea para satisfacer las necesidades de
+            implementos deportivos (guantes, vendas, bucales y sacos de boxeo) de los
+            practicantes en una academia de boxeo local, tal fue el bue auge en la
+            academia, que decidimos expandir nustro emprendimiento a una venta de
+            artículos deportivos a un nivel mayor con la apertura de redes sociales
+            (WhatsApp, Instagram y Facebook) bajo el nombre de Msport.<br>
+            Nuestra meta es ofrecer los mejores articulos, de la mejor calidad al mejor precio.<br><br>
+            Gracias por el apoyo
+        </p>
+        <div>
+            <a href="https://facebook.com" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
+            <a href="https://instagram.com" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
+            <a href="https://twitter.com" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a>
+        </div>
     </div>
 
     <div class="overlay hidden"></div>

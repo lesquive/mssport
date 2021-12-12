@@ -4,6 +4,7 @@
 const welcome = document.querySelector(".welcome-popup");
 const overlay = document.querySelector(".overlay");
 const sms = document.querySelector(".sms");
+const quienesSomos = document.querySelector(".quienesSomos");
 const carritoBox = document.querySelector(".carrito");
 const carritoLink = document.querySelector(".carrito-link");
 const carritoItem = document.querySelector(".carritoItem");
@@ -21,6 +22,7 @@ const closeModel = () => {
   overlay.classList.add("hidden");
   sms.classList.add("hidden");
   carritoBox.classList.add("hidden");
+  quienesSomos.classList.add("hidden");
 };
 
 overlay.addEventListener("click", closeModel);
@@ -44,6 +46,11 @@ const smsFunc = () => {
 
 const verCarritoFunc = () => {
   carritoBox.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
+
+const verQuienesSomosFunc = () => {
+  quienesSomos.classList.remove("hidden");
   overlay.classList.remove("hidden");
 };
 
