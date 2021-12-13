@@ -5,6 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $smsCode = $_POST['smsCode'];
     $carritoItems = $_POST['carritoItems'];
     $correo = $_POST['correo'];
+    $total = $_POST['total'];
 
     $servername = "localhost";
     $username = "root";
@@ -25,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO pedidos (correo, codigo, productos) VALUES ('$correo', '$smsCode', '$carritoItems')";
+    $sql = "INSERT INTO pedidos (correo, codigo, productos, total) VALUES ('$correo', '$smsCode', '$carritoItems', '$total')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";

@@ -24,7 +24,7 @@
         <div class="header-div right">
             <a href="javascript:void(0);" class="header-icon carrito-link"> <img src="./imagenes/shopping-cart.png" alt="carrito" class="social-media" onclick="verCarritoFunc()"> 0 </a>
             <a href="javascript:void(0);" class="header-icon"> <img src="./imagenes/discount.png" alt="Admin login" class="social-media" onclick="smsFunc()"> </a>
-            <a href="javascript:void(0);" class="header-icon"> <img src="./imagenes/lock.png" alt="Admin login" class="social-media"> </a>
+            <a href="javascript:void(0);" class="header-icon"> <img src="./imagenes/lock.png" alt="Admin login" class="social-media" onclick="loginFunc()"> </a>
         </div>
     </div>
 
@@ -85,7 +85,22 @@
         </div>
     </div>
 
+    <div class="welcome-popup hidden login">
+        <form class="form-signin">
+            <img src="imagenes/me.jpeg" width="72" alt="" class="box-img">
+            <h1 class="h3 mb-3 font-weight-normal">Consola de Administración</h1>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Correo Electrónico" required autofocus><br>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required><br>
+            <button class="btn btn-lg btn-danger btn-block" type="submit">Ingresar</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2022 MSPORT</p>
+        </form>
+    </div>
+
     <div class="overlay hidden"></div>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <a href="https://api.whatsapp.com/send?phone=50687565317" class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i></a>
 
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -156,7 +171,7 @@
                         <div class="card-body">
                             <h5 class="card-title"> <?php echo $row['nombre_producto']; ?> </h5>
                             <p class="card-text"> <?php echo $row['descripcion']; ?></p>
-                            <p id="precioProducto"><?php echo $row['precio']; ?>$</p>
+                            <p id="precioProducto">$<?php echo $row['precio']; ?></p>
                             <a href="javascript:void(0);" class="btn btn-primary carrito-btn" onclick="updateCarrito('<?php echo $row['nombre_producto']; ?>', '<?php echo $row['precio']; ?>')">Agregar a Carrito <img src="./imagenes/shopping-cart.png" alt="carito" class="social-media"></a>
                         </div>
                     </div>

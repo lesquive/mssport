@@ -11,6 +11,7 @@ const carritoItem = document.querySelector(".carritoItem");
 const carritoTotal = document.querySelector(".carritoTotal");
 const applicarDescuentoBttn = document.querySelector(".SMSBttn");
 const ejecutarCompraBttn = document.querySelector("#ejecutarCompraBttn");
+const login = document.querySelector(".login");
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -23,6 +24,7 @@ const closeModel = () => {
   sms.classList.add("hidden");
   carritoBox.classList.add("hidden");
   quienesSomos.classList.add("hidden");
+  login.classList.add("hidden");
 };
 
 overlay.addEventListener("click", closeModel);
@@ -51,6 +53,11 @@ const verCarritoFunc = () => {
 
 const verQuienesSomosFunc = () => {
   quienesSomos.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
+
+const loginFunc = () => {
+  login.classList.remove("hidden");
   overlay.classList.remove("hidden");
 };
 
@@ -158,16 +165,23 @@ const ejecutarCompra = () => {
   var smsCode = document.getElementById("smscode").value;
   var carritoItems = document.querySelector(".carritoItem").innerText;
   var correo = document.getElementById("email").value;
+  var total = document.querySelector(".carritoTotal").innerText;
 
   console.log(smsCode);
   console.log(carritoItems);
   console.log(correo);
+  console.log(total);
 
   $.ajax({
     url: "ejecutarCompra.php",
     type: "POST",
     // dataType: "json",
-    data: { smsCode: smsCode, carritoItems: carritoItems, correo: correo },
+    data: {
+      smsCode: smsCode,
+      carritoItems: carritoItems,
+      correo: correo,
+      total: total,
+    },
     success: function (response) {
       console.log(response);
     },
