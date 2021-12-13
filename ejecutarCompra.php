@@ -10,9 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $account_sid = getenv("TWILIO_ACCOUNT_SID");
     // $auth_token = getenv("TWILIO_AUTH_TOKEN");
 
-    $servername = getenv("AWS-MySQL-DB-HOST");
+    $servername = getenv("AWSMySQLDBHOST");
     $username = "root";
-    $password = getenv("AWS-MYSQL-PASSWORD");
+    $password = getenv("AWSMYSQLPASSWORD");
     $dbname = "msport";
 
     echo $smsCode;

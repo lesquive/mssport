@@ -29,9 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         array('from' => $twilio_number, 'body' => $mensaje)
     );
 
-    $servername = getenv("AWS-MySQL-DB-HOST");
+    $servername = getenv("AWSMySQLDBHOST");
     $username = "root";
-    $password = getenv("AWS-MYSQL-PASSWORD");
+    $password = getenv("AWSMYSQLPASSWORD");
     $dbname = "msport";
 
     // Create connection
