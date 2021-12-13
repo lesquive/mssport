@@ -5,9 +5,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $objectId = $_POST['smsCode'];
 
     try {
-        $servername = "msport.c04i56yalof5.us-east-2.rds.amazonaws.com";
+        $servername = getenv("AWS-MySQL-DB-HOST");
         $username = "root";
-        $password = "cisco123";
+        $password = getenv("AWS-MYSQL-PASSWORD");
         $dbname = "msport";
 
         // Create connection

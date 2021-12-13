@@ -7,9 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo = $_POST['correo'];
     $total = $_POST['total'];
 
-    $servername = "msport.c04i56yalof5.us-east-2.rds.amazonaws.com";
+    // $account_sid = getenv("TWILIO_ACCOUNT_SID");
+    // $auth_token = getenv("TWILIO_AUTH_TOKEN");
+
+    $servername = getenv("AWS-MySQL-DB-HOST");
     $username = "root";
-    $password = "cisco123";
+    $password = getenv("AWS-MYSQL-PASSWORD");
     $dbname = "msport";
 
     echo $smsCode;
