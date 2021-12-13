@@ -144,7 +144,7 @@
         <div class="row">
 
             <?php
-            $servername = "localhost";
+            $servername = "msport.c04i56yalof5.us-east-2.rds.amazonaws.com";
             $username = "root";
             $password = "cisco123";
             $dbname = "msport";
