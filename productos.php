@@ -15,12 +15,31 @@
 <body>
 
     <div class="products-header">
-        <div class="header-div left">
-            <a href="./index.php" class="header-item link">Página principal</a>
-            <a href="./productos.php" class="header-item link ">Productos</a>
-            <a href="javascript:void(0);" class="header-item link" onclick="verQuienesSomosFunc()">¿Quiénes somos?</a>
-            <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
-        </div>
+
+        <?php session_start(); ?>
+
+        <?php if (isset($_SESSION['sid']) && $_SESSION['sid'] == session_id()) : ?>
+
+            <div class="header-div left">
+                <a href="./index.php" class="header-item link">Página principal</a>
+                <a href="./productos.php" class="header-item link ">Productos</a>
+                <a href="javascript:void(0);" class="header-item link" onclick="verQuienesSomosFunc()">¿Quiénes somos?</a>
+                <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
+                <a href="./reporte.php" class="header-item link" id="reporte">Reporte</a>
+            </div>
+
+        <?php else : ?>
+
+            <div class="header-div left">
+                <a href="./index.php" class="header-item link">Página principal</a>
+                <a href="./productos.php" class="header-item link ">Productos</a>
+                <a href="javascript:void(0);" class="header-item link" onclick="verQuienesSomosFunc()">¿Quiénes somos?</a>
+                <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
+
+            </div>
+
+        <?php endif; ?>
+
         <div class="header-div right">
             <a href="javascript:void(0);" class="header-icon carrito-link"> <img src="./imagenes/shopping-cart.png" alt="carrito" class="social-media" onclick="verCarritoFunc()"> 0 </a>
             <a href="javascript:void(0);" class="header-icon"> <img src="./imagenes/discount.png" alt="Admin login" class="social-media" onclick="smsFunc()"> </a>
@@ -83,14 +102,15 @@
             <a href="https://instagram.com" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
             <a href="https://twitter.com" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a>
         </div>
+
     </div>
 
     <div class="welcome-popup hidden login">
-        <form class="form-signin">
+        <form class="form-signin" action="validar.php" method="post">
             <img src="imagenes/me.jpeg" width="72" alt="" class="box-img">
             <h1 class="h3 mb-3 font-weight-normal">Consola de Administración</h1>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Correo Electrónico" required autofocus><br>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required><br>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Correo Electrónico" required autofocus name="usuario"><br>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required name="contraseña"><br>
             <button class="btn btn-lg btn-danger btn-block" type="submit">Ingresar</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2022 MSPORT</p>
         </form>

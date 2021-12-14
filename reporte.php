@@ -17,35 +17,83 @@
     <div class="main-background">
 
         <div class="header">
-            <?php session_start(); ?>
-
-            <?php if (isset($_SESSION['sid']) && $_SESSION['sid'] == session_id()) : ?>
-
-                <div class="header-div left">
-                    <a href="./index.php" class="header-item link">Página principal</a>
-                    <a href="./productos.php" class="header-item link ">Productos</a>
-                    <a href="javascript:void(0);" class="header-item link" onclick="verQuienesSomosFunc()">¿Quiénes somos?</a>
-                    <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
-                    <a href="./reporte.php" class="header-item link" id="reporte">Reporte</a>
-                </div>
-
-            <?php else : ?>
-
-                <div class="header-div left">
-                    <a href="./index.php" class="header-item link">Página principal</a>
-                    <a href="./productos.php" class="header-item link ">Productos</a>
-                    <a href="javascript:void(0);" class="header-item link" onclick="verQuienesSomosFunc()">¿Quiénes somos?</a>
-                    <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
-
-                </div>
-
-            <?php endif; ?>
-
+            <div class="header-div left">
+                <a href="./index.php" class="header-item link">Página principal</a>
+                <a href="./productos.php" class="header-item link ">Productos</a>
+                <a href="javascript:void(0);" class="header-item link" onclick="verQuienesSomosFunc()">¿Quiénes somos?</a>
+                <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
+            </div>
             <div class="header-div right">
                 <a href="javascript:void(0);" class="header-icon carrito-link"> <img src="./imagenes/shopping-cart.png" alt="carrito" class="social-media" onclick="verCarritoFunc()"> 0 </a>
                 <a href="javascript:void(0);" class="header-icon"> <img src="./imagenes/discount.png" alt="Admin login" class="social-media" onclick="smsFunc()"> </a>
                 <a href="javascript:void(0);" class="header-icon"> <img src="./imagenes/lock.png" alt="Admin login" class="social-media" onclick="loginFunc()"> </a>
             </div>
+        </div>
+
+        <div class="container-fluid reporte">
+
+            <table class="table table-striped">
+                <thead>
+                    <td>ID</td>
+                    <td>Correo</td>
+                    <td>Codigo</td>
+                    <td>Productos</td>
+                    <td>Total</td>
+                    <td>Fecha</td>
+                </thead>
+                <?php
+
+                session_start();
+
+                if ($_SESSION['sid'] == session_id()) {
+
+                    $servername = getenv("AWSMySQLDBHOST");
+                    $username = "root";
+                    $password = getenv("AWSMYSQLPASSWORD");
+                    $dbname = "msport";
+
+                    // Create connection
+                    //$conn = new mysqli($servername, $username, $password, $dbname);
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    $sql = "SELECT id, correo, codigo, productos, total, dt FROM pedidos";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while ($mostrar = mysqli_fetch_array($result)) {
+                            // echo "nombre_producto: " . $row["nombre_producto"] . " - precio: " . $row["precio"] . " " . $row["descripcion"] . "<br>";
+                ?>
+
+                            <div>
+                                <tbody>
+                                    <td><?php echo $mostrar['id'] ?></td>
+                                    <td><?php echo $mostrar['correo'] ?></td>
+                                    <td><?php echo $mostrar['codigo'] ?></td>
+                                    <td><?php echo $mostrar['productos'] ?></td>
+                                    <td><?php echo $mostrar['total'] ?></td>
+                                    <td><?php echo $mostrar['dt'] ?></td>
+                                </tbody>
+
+                            </div>
+                <?php
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    $conn->close();
+                } else {
+                    header("location:index.php");
+                }
+
+
+                ?>
+            </table>
         </div>
 
         <div class="welcome-popup hidden">
