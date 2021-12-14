@@ -3,6 +3,7 @@
   padding: 0;
 }
 
+/* background de index con imagen */
 .main-background {
   display: flex;
   flex-direction: column;
@@ -107,6 +108,7 @@ footer {
   padding: 0;
 }
 
+/* Todos los divs que flotan en el medio de la pagina tienen esta clase */
 .welcome-popup {
   position: absolute;
   text-align: center;
@@ -129,10 +131,12 @@ footer {
   margin-right: auto;
 }
 
+/* Nos ayuda a esconder los elementos */
 .hidden {
   display: none;
 }
 
+/* Tiene el efecto borroso */
 .overlay {
   position: absolute;
   top: 0;
@@ -144,6 +148,7 @@ footer {
   z-index: 5;
 }
 
+/* iconos de social media */
 .social-media {
   width: 25px;
   margin-left: 15px;
@@ -169,6 +174,7 @@ footer {
   border-style: none none solid none;
 }
 
+/* boton de watsapp */
 .float {
   position: fixed;
   width: 60px;

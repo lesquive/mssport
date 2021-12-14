@@ -44,10 +44,13 @@
                 </thead>
                 <?php
 
+                //unicamente si esta autenticado se puede ver el contenido de esta pagina
+
                 session_start();
 
                 if ($_SESSION['sid'] == session_id()) {
 
+                    //escondemos el URL del DB y el password
                     $servername = getenv("AWSMySQLDBHOST");
                     $username = "root";
                     $password = getenv("AWSMYSQLPASSWORD");
@@ -62,6 +65,7 @@
                         die("Connection failed: " . $conn->connect_error);
                     }
 
+                    // por cada entry en la tabla pedidos, generamos un row de data
                     $sql = "SELECT id, correo, codigo, productos, total, dt FROM pedidos";
                     $result = mysqli_query($conn, $sql);
 
@@ -89,6 +93,7 @@
                     }
                     $conn->close();
                 } else {
+                    //Al no esta autenticado, se hace un redirect a index.php
                     header("location:index.php");
                 }
 
@@ -97,6 +102,7 @@
             </table>
         </div>
 
+        <!-- hidden class nos ayuda a esconder los divs cuando no los queremos ver. -->
         <div class="welcome-popup hidden">
             <h1>¡Contáctanos!</h1>
             <p>Y con gusto le atenderemos</p>
@@ -109,6 +115,7 @@
             </div>
         </div>
 
+        <!-- SMS div hidden -->
         <div class="welcome-popup hidden sms">
             <h1>¡Las mejores promociones a un click!</h1>
             <p>Ingresa el número de teléfono para obtener las mejores ofertas!</p>
@@ -119,6 +126,7 @@
             </form>
         </div>
 
+        <!-- Carrito div hidden -->
         <div class="welcome-popup hidden carrito">
             <h3>¡Compre de manera fácil!</h3>
             <form>
@@ -134,6 +142,7 @@
             <!-- <button type="button" class="btn btn-success btn-lg" type="submit" value="Submit" form="submitCompra">Listo!</button> -->
         </div>
 
+        <!-- Quienes somos Div hidden por default -->
         <div class="welcome-popup hidden quienesSomos">
             <img src="imagenes/me.jpeg" width="180" alt="" class="box-img">
             <h1>MSport</h1>
@@ -154,6 +163,7 @@
             </div>
         </div>
 
+        <!-- Cuando se necesita autenticar con el sistema -->
         <div class="welcome-popup hidden login">
             <form class="form-signin" action="validar.php" method="post">
                 <img src="imagenes/me.jpeg" width="72" alt="" class="box-img">
@@ -165,8 +175,10 @@
             </form>
         </div>
 
+        <!-- Class overlay hidden da un efecto borroso  -->
         <div class="overlay hidden"></div>
 
+        <!-- boton de watsapp flotante -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <a href="https://api.whatsapp.com/send?phone=50687565317" class="float" target="_blank">
             <i class="fa fa-whatsapp my-float"></i></a>

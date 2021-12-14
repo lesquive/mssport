@@ -2,14 +2,13 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    //obtenemos el codigo SMS, el correo, el total de items en el carrito y el total en precio
     $smsCode = $_POST['smsCode'];
     $carritoItems = $_POST['carritoItems'];
     $correo = $_POST['correo'];
     $total = $_POST['total'];
 
-    // $account_sid = getenv("TWILIO_ACCOUNT_SID");
-    // $auth_token = getenv("TWILIO_AUTH_TOKEN");
-
+    //escondemos el URL del DB y el password
     $servername = getenv("AWSMySQLDBHOST");
     $username = "root";
     $password = getenv("AWSMYSQLPASSWORD");
@@ -18,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo $smsCode;
     echo $correo;
 
+    //formateamos el codigo para no tener espacios en blanco
     $carritoItems = str_replace("\n", "", $carritoItems);
 
     echo $carritoItems;
@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
+    //insertamos en el DB toda la informacion para que mario la pueda ver despues
     $sql = "INSERT INTO pedidos (correo, codigo, productos, total) VALUES ('$correo', '$smsCode', '$carritoItems', '$total')";
 
     if ($conn->query($sql) === TRUE) {

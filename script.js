@@ -13,10 +13,12 @@ const applicarDescuentoBttn = document.querySelector(".SMSBttn");
 const ejecutarCompraBttn = document.querySelector("#ejecutarCompraBttn");
 const login = document.querySelector(".login");
 
+//para generar codigos random
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+//para cerrar los divs y agregar la clase hidden
 const closeModel = () => {
   console.log("cerrando welcome");
   welcome.classList.add("hidden");
@@ -29,6 +31,7 @@ const closeModel = () => {
 
 overlay.addEventListener("click", closeModel);
 
+//si oprimimos ESC se ejecuta closeModel
 document.addEventListener("keydown", (e) => {
   console.log(e.key);
   if (e.key == "Escape") {
@@ -36,31 +39,37 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+//ver contact
 const contact = () => {
   welcome.classList.remove("hidden");
   overlay.classList.remove("hidden");
 };
 
+//ver sms
 const smsFunc = () => {
   sms.classList.remove("hidden");
   overlay.classList.remove("hidden");
 };
 
+//ver carrito
 const verCarritoFunc = () => {
   carritoBox.classList.remove("hidden");
   overlay.classList.remove("hidden");
 };
 
+//ver quienes somos
 const verQuienesSomosFunc = () => {
   quienesSomos.classList.remove("hidden");
   overlay.classList.remove("hidden");
 };
 
+//ver login
 const loginFunc = () => {
   login.classList.remove("hidden");
   overlay.classList.remove("hidden");
 };
 
+//actualizar el contenido de carrito (la parte mas complicada)
 const updateCarrito = (nombreProducto, precioProducto) => {
   console.log("adding item to carrito!");
   if (typeof Storage !== "undefined") {
@@ -91,6 +100,7 @@ const updateCarrito = (nombreProducto, precioProducto) => {
     localStorage.carritoCount;
 };
 
+//verificar el contenido del carrito (igual de complicado jaja)
 const checkCarrito = () => {
   if (typeof Storage !== "undefined") {
     if (localStorage.carritoCount) {
@@ -113,6 +123,7 @@ const checkCarrito = () => {
   }
 };
 
+//borrar items del carrito
 const deleteItem = (id) => {
   var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
   for (let i = 0; i < existingEntries.length; i++) {
@@ -138,6 +149,7 @@ const deleteItem = (id) => {
     localStorage.carritoCount;
 };
 
+//verificar el descuento via AJAX
 const checkDiscount = () => {
   var smsCode = document.getElementById("smscode").value;
   console.log(smsCode);
@@ -161,6 +173,7 @@ const checkDiscount = () => {
   });
 };
 
+//Ejecutar compra via AJAX
 const ejecutarCompra = () => {
   var smsCode = document.getElementById("smscode").value;
   var carritoItems = document.querySelector(".carritoItem").innerText;
@@ -187,6 +200,7 @@ const ejecutarCompra = () => {
     },
   });
 
+  //limiar todo el loal storage
   window.localStorage.clear();
   closeModel();
   checkCarrito();
@@ -200,4 +214,5 @@ const ejecutarCompra = () => {
 applicarDescuentoBttn.addEventListener("click", checkDiscount);
 ejecutarCompraBttn.addEventListener("click", ejecutarCompra);
 
+//siempre que la pagina carga, necesitamos llamar checkCarrito
 checkCarrito();

@@ -5,6 +5,7 @@ require __DIR__ . '/vendor/autoload.php';
 use Twilio\Rest\Client;
 
 // Your Account SID and Auth Token from twilio.com/console
+//escondemos los credenciales de Twilio API
 $account_sid = getenv("TWILIO_ACCOUNT_SID");
 $auth_token = getenv("TWILIO_AUTH_TOKEN");
 // In production, these should be environment variables. E.g.:
@@ -13,6 +14,8 @@ $auth_token = getenv("TWILIO_AUTH_TOKEN");
 // A Twilio number you own with SMS capabilities
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    //si el metodo es POST, utilizamos un random para generar el codigo entre 0 y 99999 y el descuento entre 5% - 15%
 
     $twilio_number = "+14842638771";
     $to_numer = "+506" . $_POST['phone'];
@@ -27,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         array('from' => $twilio_number, 'body' => $mensaje)
     );
 
+    //escondemos el URL del DB y el password
     $servername = getenv("AWSMySQLDBHOST");
     $username = "root";
     $password = getenv("AWSMYSQLPASSWORD");
@@ -39,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
+    //insertamos en el DB la informacion de cliente y el codigo con el descuento
     $sql = "INSERT INTO cliente (telefono, descuento, codigo) VALUES ($to_numer, $descuento, $codigo)";
 
     if ($conn->query($sql) === TRUE) {

@@ -3,12 +3,14 @@
   padding: 0;
 }
 
+/* style del body */
 body {
   display: flex;
   flex-direction: column;
   margin: 0;
 }
 
+/* style del header */
 .header {
   width: 100%;
   display: flex;
@@ -58,6 +60,7 @@ body {
   margin: 5px;
 }
 
+/* Style del footer */
 footer {
   color: white;
   margin-top: auto;
@@ -77,6 +80,7 @@ footer {
   padding: 0;
 }
 
+/* Todos los divs que flotan en el medio de la pagina tienen esta clase */
 .welcome-popup {
   text-align: center;
   position: absolute;
@@ -90,10 +94,12 @@ footer {
   z-index: 10;
 }
 
+/* Nos ayuda a esconder los elementos */
 .hidden {
   display: none;
 }
 
+/* Tiene el efecto borroso */
 .overlay {
   position: absolute;
   top: 0;

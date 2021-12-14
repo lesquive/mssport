@@ -17,8 +17,10 @@
     <div class="main-background">
 
         <div class="header">
+            <!-- iniciamos session  -->
             <?php session_start(); ?>
 
+            <!-- IF la sesion ya esta autenticada, mostramos reporte -->
             <?php if (isset($_SESSION['sid']) && $_SESSION['sid'] == session_id()) : ?>
 
                 <div class="header-div left">
@@ -30,6 +32,7 @@
                 </div>
 
             <?php else : ?>
+                <!-- IF la sesion NO esta autenticada, NO mostramos reporte -->
 
                 <div class="header-div left">
                     <a href="./index.php" class="header-item link">Página principal</a>
@@ -48,18 +51,20 @@
             </div>
         </div>
 
+        <!-- hidden class nos ayuda a esconder los divs cuando no los queremos ver. -->
         <div class="welcome-popup hidden">
             <h1>¡Contáctanos!</h1>
             <p>Y con gusto le atenderemos</p>
             <p><img src="./imagenes/email.png" alt="email" class="social-media contact-icons"><a href="mailto: info@msport.cr">info@msport.cr</a></p>
             <p><img src="./imagenes/iphone.png" alt="email" class="social-media contact-icons"><a href="tel:+50687071234">+506 8707 1234</a></p>
             <div>
-                <a href="https://facebook.com" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
-                <a href="https://instagram.com" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
-                <a href="https://twitter.com" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a> <br>
+                <a href="https://www.facebook.com/msportcr" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
+                <a href="https://instagram.com/msport_costarica" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
+                <a href="https://twitter.com/MsportCr" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a> <br>
             </div>
         </div>
 
+        <!-- SMS div hidden -->
         <div class="welcome-popup hidden sms">
             <h1>¡Las mejores promociones a un click!</h1>
             <p>Ingresa el número de teléfono para obtener las mejores ofertas!</p>
@@ -70,6 +75,7 @@
             </form>
         </div>
 
+        <!-- Carrito div hidden -->
         <div class="welcome-popup hidden carrito">
             <h3>¡Compre de manera fácil!</h3>
             <form>
@@ -85,6 +91,7 @@
             <!-- <button type="button" class="btn btn-success btn-lg" type="submit" value="Submit" form="submitCompra">Listo!</button> -->
         </div>
 
+        <!-- Quienes somos Div hidden por default -->
         <div class="welcome-popup hidden quienesSomos">
             <img src="imagenes/me.jpeg" width="180" alt="" class="box-img">
             <h1>MSport</h1>
@@ -99,12 +106,13 @@
                 Gracias por el apoyo
             </p>
             <div>
-                <a href="https://facebook.com" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
-                <a href="https://instagram.com" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
-                <a href="https://twitter.com" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a>
+                <a href="https://www.facebook.com/msportcr" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
+                <a href="https://instagram.com/msport_costarica" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
+                <a href="https://twitter.com/MsportCr" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a>
             </div>
         </div>
 
+        <!-- Cuando se necesita autenticar con el sistema -->
         <div class="welcome-popup hidden login">
             <form class="form-signin" action="validar.php" method="post">
                 <img src="imagenes/me.jpeg" width="72" alt="" class="box-img">
@@ -116,7 +124,10 @@
             </form>
         </div>
 
+        <!-- Class overlay hidden da un efecto borroso  -->
         <div class="overlay hidden"></div>
+
+        <!-- boton de watsapp flotante -->
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <a href="https://api.whatsapp.com/send?phone=50687565317" class="float" target="_blank">
@@ -125,9 +136,9 @@
         <footer>
             ©MSPORT 2022 <br>
             Todos los derechos reservados <br>
-            <a href="https://facebook.com" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
-            <a href="https://instagram.com" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
-            <a href="https://twitter.com" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a> <br>
+            <a href="https://www.facebook.com/msportcr" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
+            <a href="https://instagram.com/msport_costarica" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
+            <a href="https://twitter.com/MsportCr" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a> <br>
             Contactanos por teléfono: +506 8707 1273
         </footer>
 
