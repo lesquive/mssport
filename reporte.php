@@ -109,9 +109,9 @@
             <p><img src="./imagenes/email.png" alt="email" class="social-media contact-icons"><a href="mailto: info@msport.cr">info@msport.cr</a></p>
             <p><img src="./imagenes/iphone.png" alt="email" class="social-media contact-icons"><a href="tel:+50687071234">+506 8707 1234</a></p>
             <div>
-                <a href="https://facebook.com" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
-                <a href="https://instagram.com" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
-                <a href="https://twitter.com" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a> <br>
+                <a href="https://www.facebook.com/msportcr" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
+                <a href="https://instagram.com/msport_costarica" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
+                <a href="https://twitter.com/MsportCr" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a> <br>
             </div>
         </div>
 
@@ -157,9 +157,9 @@
                 Gracias por el apoyo
             </p>
             <div>
-                <a href="https://facebook.com" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
-                <a href="https://instagram.com" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
-                <a href="https://twitter.com" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a>
+                <a href="https://www.facebook.com/msportcr" target="_blank"><img src="./imagenes/fb.png" alt="Facebook" class="social-media"></a>
+                <a href="https://instagram.com/msport_costarica" target="_blank"><img src="./imagenes/ig.png" alt="Instagram" class="social-media"></a>
+                <a href="https://twitter.com/MsportCr" target="_blank"><img src="./imagenes/tw.png" alt="Twitter" class="social-media"></a> <br>
             </div>
         </div>
 
