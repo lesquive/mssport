@@ -50,4 +50,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 
-header("Location:http://localhost/proyecto/index.php");
+header("Location:index.php");

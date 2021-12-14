@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $filas = mysqli_num_rows($resultado);
 
     if ($filas) {
+        //codigo para login/logout: http://www.makeitsimple.co.in/PHP_loginexmp.php
         session_start();
         $_SESSION['sid'] = session_id();
         header("Location: index.php");

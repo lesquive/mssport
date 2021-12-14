@@ -22,6 +22,7 @@
                 <a href="./productos.php" class="header-item link ">Productos</a>
                 <a href="javascript:void(0);" class="header-item link" onclick="verQuienesSomosFunc()">¿Quiénes somos?</a>
                 <a href="javascript:void(0);" class="header-item link" id="contactanos" onclick="contact()">Contáctanos</a>
+                <a href="./reporte.php" class="header-item link" id="reporte">Reporte</a>
             </div>
             <div class="header-div right">
                 <a href="javascript:void(0);" class="header-icon carrito-link"> <img src="./imagenes/shopping-cart.png" alt="carrito" class="social-media" onclick="verCarritoFunc()"> 0 </a>
